@@ -1,0 +1,71 @@
+name-template: 'v$RESOLVED_VERSION 🌈'
+tag-template: 'v$RESOLVED_VERSION'
+version-template: '$MAJOR.$MINOR.$PATCH'
+version-resolver:
+  major:
+    labels:
+    - 'major'
+  minor:
+    labels:
+    - 'minor'
+    - 'enhancement'
+    - 'feature'
+  patch:
+    labels:
+    - 'auto-update'
+    - 'patch'
+    - 'fix'
+    - 'chore'
+    - 'bugfix'
+    - 'bug'
+    - 'hotfix'
+  default: 'patch'
+
+categories:
+- title: '🚀 Major / Breaking Changes'
+  labels:
+  - 'major'
+- title: '🚀 Enhancements'
+  labels:
+  - 'enhancement'
+  - 'feature'
+  - 'patch'
+- title: '🐛 Bug Fixes'
+  labels:
+  - 'fix'
+  - 'bugfix'
+  - 'bug'
+  - 'hotfix'
+- title: '🤖 Automatic Updates'
+  labels:
+  - 'auto-update'
+- title: '📝 Documentation'
+  labels:
+    - 'docs'
+
+autolabeler:
+  - label: 'docs'
+    files:
+      - '*.md'
+
+  - label: 'enhancement'
+    title: '/enhancement/i'
+
+  - label: 'bug'
+    title: '/🐛|🐞|fixes/i'
+
+  - label: 'auto-update'
+    title: '/🤖/i'
+
+  - label: 'feature'
+    title: '/🚀|🎉/i'
+
+  - label: 'major'
+    title: '/major|breaking change/i'
+
+change-template: '- $TITLE (#$NUMBER)'
+
+template: |
+  # What's Changed
+  $CHANGES
+  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
